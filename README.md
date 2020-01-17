@@ -5,6 +5,16 @@ base on  [react-native-smart-gesture-password][0]　More friendly to existing re
 
 (修复了偏移的bug，在navigation存在或者statusBar的情况都可以适用，有bug，直接提issue吧)
 
+/* 
+ *  因为刚上手RN不久，解决offset的这个方法并不太高明，有更好的办法请赐教
+ *  因为这里取了 view 的绝对坐标，因此可能父节点 有动作啥的，这时候取的坐标是不对的
+ *  这里提供了 recomputeLayout 这个函数，主动刷新，因为只有使用者自己知道动作什么时候结束
+ *  这个时候刷新一下位置即可,默认delay了300ms，我觉得对于绝大多数view是足够的,也可以自己设置 viewDelay 
+ * 
+ * 
+ *  this.ref.recomputeLayout () ;
+ */
+
 
 ## Preview
 ![react-native-smart-gesture-password-demo][1]
@@ -197,6 +207,8 @@ onStart              | func    | Yes      |              | determine the listene
 onMove               | func    | Yes      |              | determine the listener which is called after gesture is moved
 onReset              | func    | Yes      |              | determine the listener which is called after gesture is reseted
 onFinish             | func    | Yes      |              | determine the listener which is called after gesture actions is finished
+isDebug              | bool    | Yes      | false        | log debug 
+viewDelay            : number  | Yes      | 300(ms)      | to relayout the view position delay (in msecons)
 
 [0]: https://github.com/react-native-component/react-native-smart-gesture-password
 [1]: https://github.com/MoMask/react-native-ok-gesture-password/blob/master/screehost/demo.gif
