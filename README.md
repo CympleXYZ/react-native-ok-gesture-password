@@ -3,6 +3,8 @@ gesture password component,smooth easy and quick
 
 base on  [react-native-smart-gesture-password][0]　More friendly to existing reactive native versions, adding moving callbacks
 
+(修复了偏移的bug，在navigation存在或者statusBar的情况都可以适用，有bug，直接提issue吧)
+
 
 ## Preview
 ![react-native-smart-gesture-password-demo][1]
