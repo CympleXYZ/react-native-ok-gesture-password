@@ -138,9 +138,11 @@ export default class OkGesturePassword extends Component {
             if (this.viewRef && this.viewRef.measure) {
                 this.viewRef.measure((x, y, width, height, pageX, pageY) => {
                     // console.log(x, y, width, height, pageX, pageY);
-                    this._gestureAreaLeft = pageX;
-                    this._gestureAreaTop = pageY;
-                    this._initializePoints()
+					if (this.viewRef) {
+						this._gestureAreaLeft = pageX;
+						this._gestureAreaTop = pageY;
+						this._initializePoints()
+					}
                 })
             }
         },0)
