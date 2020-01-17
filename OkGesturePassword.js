@@ -105,6 +105,7 @@ export default class OkGesturePassword extends Component {
     render() {
         return (
             <View
+                ref={(ref) => this.viewRef = ref}
                 {...this._panResponder.panHandlers}
                 onLayout={this._onLayout}
                 style={[{
@@ -128,9 +129,28 @@ export default class OkGesturePassword extends Component {
     }
 
     _onLayout = (e) => {
-        this._gestureAreaLeft = e.nativeEvent.layout.x
-        this._gestureAreaTop = e.nativeEvent.layout.y
-        this._initializePoints()
+
+        // 
+        // setTimeout (() => {} ,0) 
+        // to avoid pageY 0 bug 
+        // 
+        setTimeout (() => {
+            if (this.viewRef && this.viewRef.measure) {
+                this.viewRef.measure((x, y, width, height, pageX, pageY) => {
+                    // console.log(x, y, width, height, pageX, pageY);
+                    this._gestureAreaLeft = pageX;
+                    this._gestureAreaTop = pageY;
+                    this._initializePoints()
+                })
+            }
+        },0)
+
+        // fix offsetY bug , 
+        // need to sub the screen offsetY in layout 
+        // 
+        // this._gestureAreaLeft = e.nativeEvent.layout.x
+        // this._gestureAreaTop = e.nativeEvent.layout.y
+        // this._initializePoints()
     }
 
     _renderArrows() {
@@ -329,10 +349,14 @@ export default class OkGesturePassword extends Component {
     }
 
     _onTouchMove = (e, gestureState) => {
+
         let location = {
             x: e.nativeEvent.pageX,
             y: e.nativeEvent.pageY,
         }
+        
+        console.log ("x = " ,e.nativeEvent.pageX, "y = " , e.nativeEvent.pageY);
+
         let point = this._getTouchPoint(location)
 
         if (point == null) {
