@@ -62,7 +62,7 @@ export default class OkGesturePassword extends Component {
         onReset: PropTypes.func,
         onFinish: PropTypes.func,
         isDebug : PropTypes.bool,
-        viewDelay : this.propTypes.number,
+        viewDelay : PropTypes.number,
     };
 
     // 构造
