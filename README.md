@@ -208,7 +208,8 @@ onMove               | func    | Yes      |              | determine the listene
 onReset              | func    | Yes      |              | determine the listener which is called after gesture is reseted
 onFinish             | func    | Yes      |              | determine the listener which is called after gesture actions is finished
 isDebug              | bool    | Yes      | false        | log debug 
-viewDelay            : number  | Yes      | 300(ms)      | to relayout the view position delay (in msecons)
+viewDelay            | number  | Yes      | 300(ms)      | to relayout the view position delay (in msecons)
+recomputeLayout      | func     | Yes     |    --        | to recomputeLayout the view Screen positions 
 
 [0]: https://github.com/react-native-component/react-native-smart-gesture-password
 [1]: https://github.com/MoMask/react-native-ok-gesture-password/blob/master/screehost/demo.gif
