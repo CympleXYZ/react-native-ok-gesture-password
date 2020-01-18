@@ -196,7 +196,7 @@ export default class OkGesturePassword extends Component {
                 <Arrow
                     key={'arrow-' + index}
                     width={this._pointRadius / 3}
-                    color={arrow.color}
+                    color={this.props.lineColor || this.props.activeColor}
                     start={{
                         x: arrow.start.x - this._gestureAreaLeft,
                         y: arrow.start.y - this._gestureAreaTop,
@@ -236,7 +236,7 @@ export default class OkGesturePassword extends Component {
             return (
                 <Line
                     key={'line-' + index}
-                    color={line.color}
+                    color={this.props.lineColor || this.props.activeColor}
                     lineWidth={this.props.lineWidth}
                     start={{
                         x: line.start.x - this._gestureAreaLeft,
