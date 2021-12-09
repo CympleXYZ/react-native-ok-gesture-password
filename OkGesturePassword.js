@@ -86,10 +86,6 @@ export default class OkGesturePassword extends Component {
         this._currentLine = null
         this._timer = null
         this._sequence = []
-    }
-
-    componentWillMount() {
-
         this._panResponder = PanResponder.create({
             onStartShouldSetPanResponder: () => true,
             onMoveShouldSetPanResponder: () => true,
@@ -101,7 +97,7 @@ export default class OkGesturePassword extends Component {
 
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         this.setState({
             isWarning: nextProps.isWarning
         });
@@ -146,28 +142,28 @@ export default class OkGesturePassword extends Component {
                 // this.Logd (x, y, width, height, pageX, pageY);
                 if (this.viewRef) {
 
-                    // when view animated , the screen position of view 
+                    // when view animated , the screen position of view
                     // will be incorrect ,
 
                     this._gestureAreaLeft = pageX;
                     this._gestureAreaTop = pageY;
-                    this._initializePoints(true);   // force to reflush layout 
+                    this._initializePoints(true);   // force to reflush layout
 
-                    // enable touch 
+                    // enable touch
                     this.setState ({disabledView : false})
                 }
             })
-        } 
+        }
     }
 
     _onLayout = (e) => {
 
-        // 
-        // setTimeout (() => {} ,0) 
-        // to avoid pageY 0 bug 
-        // 
-        
-        // first to disable touch 
+        //
+        // setTimeout (() => {} ,0)
+        // to avoid pageY 0 bug
+        //
+
+        // first to disable touch
         // this.setState ({disabledView : false})
 
         setTimeout (() => {
@@ -177,10 +173,10 @@ export default class OkGesturePassword extends Component {
 
         },this.props.viewDelay)       //  delay to wait the view animation completed
 
-        // fix offsetY bug , 
-        // need to sub the screen offsetY in layout 
-        // 
-        
+        // fix offsetY bug ,
+        // need to sub the screen offsetY in layout
+        //
+
         // this._gestureAreaLeft = e.nativeEvent.layout.x
         // this._gestureAreaTop = e.nativeEvent.layout.y
 
@@ -390,7 +386,7 @@ export default class OkGesturePassword extends Component {
     }
 
     _onTouchMove = (e, gestureState) => {
-        
+
         if (this.state.disabledView) {
             return ;
         }
@@ -399,7 +395,7 @@ export default class OkGesturePassword extends Component {
             x: e.nativeEvent.pageX,
             y: e.nativeEvent.pageY,
         }
-        
+
         this.Logd ("x = " ,e.nativeEvent.pageX, "y = " , e.nativeEvent.pageY);
 
         let point = this._getTouchPoint(location)

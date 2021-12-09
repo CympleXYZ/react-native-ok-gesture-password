@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MoMask/react-native-ok-gesture-password.git"
+    "url": "git+https://github.com/CympleXYZ/react-native-ok-gesture-password.git"
   },
   "keywords": [
     "react-native-ok-gesture-password"
@@ -16,7 +16,10 @@
   "author": "momask",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/MoMask/react-native-ok-gesture-password/issues"
+    "url": "https://github.com/CympleXYZ/react-native-ok-gesture-password/issues"
   },
-  "homepage": "https://github.com/MoMask/react-native-ok-gesture-password/blob/master/README.md"
+  "homepage": "https://github.com/CympleXYZ/react-native-ok-gesture-password/blob/master/README.md",
+  "dependencies": {
+    "prop-types": "^15.7.2"
+  }
 }
